@@ -1,58 +1,8 @@
-## Foundry Template
+## Openmesh Academy Showcase
 
-This template adds web3webdeploy and the slither analyzer to the base foundry project.
+OPEN token modification to allow for free claiming. This is used to showcase Openmesh community governance for Openmesh academy members.
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+### Links
 
-Foundry consists of:
-
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-forge build
-```
-
-### Test
-
-```shell
-forge test
-```
-
-### Deploy
-
-```shell
-make deploy
-```
-
-## Local chain
-
-```shell
-anvil
-make local-fund ADDRESS="YOURADDRESSHERE"
-```
-
-### Analyze
-
-```shell
-make slither
-make mythril TARGET=Counter.sol
-```
-
-### Help
-
-```shell
-forge --help
-anvil --help
-cast --help
-```
+DAO: https://app.aragon.org/#/daos/sepolia/0x88c9fFC206256563A19a4fF0D6383d9b9b8d4b60/dashboard
+Get free tokens: https://sepolia.etherscan.io/address/0x92064e5effaf567aa70284eb298b545d98936896#writeContract

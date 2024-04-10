@@ -1,27 +1,13 @@
 import { Address, Deployer } from "../web3webdeploy/types";
-import { DeployCounterSettings, deployCounter } from "./counters/Counter";
-import {
-  DeployProxyCounterSettings,
-  deployProxyCounter,
-} from "./counters/ProxyCounter";
-import {
-  SetInitialCounterValueSettings,
-  setInitialCounterValue,
-} from "./counters/SetInitialCounterValue";
+import { DeployOpenASSettings, deployOpenAS } from "./internal/OPENas";
 
 export interface DeploymentSettings {
-  counterSettings: DeployCounterSettings;
-  proxyCounterSettings: Omit<DeployProxyCounterSettings, "counter">;
-  setInitialCounterValueSettings: Omit<
-    SetInitialCounterValueSettings,
-    "counter"
-  >;
+  openASSettings: DeployOpenASSettings;
   forceRedeploy?: boolean;
 }
 
 export interface Deployment {
-  counter: Address;
-  proxyCounter: Address;
+  openAS: Address;
 }
 
 export async function deploy(
@@ -37,24 +23,10 @@ export async function deploy(
     }
   }
 
-  const counter = await deployCounter(
-    deployer,
-    settings?.counterSettings ?? {}
-  );
-  const proxyCounter = await deployProxyCounter(deployer, {
-    ...(settings?.proxyCounterSettings ?? {}),
-    counter: counter,
-  });
-  await setInitialCounterValue(deployer, {
-    ...(settings?.setInitialCounterValueSettings ?? {
-      counterValue: BigInt(3),
-    }),
-    counter: counter,
-  });
+  const openAS = await deployOpenAS(deployer, settings?.openASSettings ?? {});
 
   const deployment = {
-    counter: counter,
-    proxyCounter: proxyCounter,
+    openAS: openAS,
   };
   await deployer.saveDeployment({
     deploymentName: "latest.json",
